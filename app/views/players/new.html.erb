@@ -1,0 +1,44 @@
+<% provide(:title,"Cadastre um novo jogador") %>
+
+<h1> Novo jogador </h1>
+
+<div class="row">
+	<div class="span12" >
+		<%= form_for @player, validate: true, html: {class: "form-horizontal"} do |f| %>
+			
+			<div class="control-group">
+				
+				<%= f.label :name, "Nome completo", class: "control-label" %>
+				<div class="controls">
+					<%= f.text_field :name, placeholder: "Digite seu nome e sobrenome.", 
+																	class: "input-xlarge"%>
+				</div>
+
+				<%= f.label :user, "Nome de usuário", class: "control-label" %>
+				<div class="controls">
+					<%= f.text_field :user, placeholder: "Digite seu nome de usuário." %>
+				</div>
+
+				<%= f.label :password, "Senha", class: "control-label" %>
+				<div class="controls">
+					<%= f.password_field :password,
+																placeholder: "Digite sua senha." %>
+				</div>
+
+				<%= f.label :password_confirmation, "Confirme a senha", class: "control-label" %>	
+				<div class="controls">
+        	<%= f.password_field :password_confirmation, 
+        												placeholder: "Digite sua senha novamente." %>
+        </div>	
+				
+				<div class="controls">
+          <%= f.submit "Novo jogador", class: "btn btn-large btn-primary btn-criarusuario" %>
+        </div>
+
+
+
+			</div>
+		<% end %>	
+
+	</div>
+</div>	

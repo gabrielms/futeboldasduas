@@ -1,0 +1,81 @@
+
+<% provide(:title,"Cadastre uma partida") %>
+
+
+<h1> Partida </h1>
+
+<div class="row">
+	
+	<div class="span12">
+
+		<%= form_for @match, validate: true, html: {class: "form-horizontal"} do |f| %>
+			
+			<div class="control-group">	
+
+				<%= f.label :date, "Data da partida", class: "control-label" %>
+				<div class="controls">
+					<%=  date_select :match, :date %>
+				</div>
+			</div>			
+	</div>
+</div>	
+
+<div class="row">	
+	<div class="span4">
+		<div class="pull-right">
+			<%= f.label :goals_team_a, "Time A", class: "control-label" %>
+			<div class="controls">
+	      <%= f.text_field :goals_team_a, label: 'Time A', placeholder: 'Gols',
+	          						 class: "input-medium" %>
+    	</div>
+     	
+    	<% Player.all.each do |p| -%>
+    		<label class="checkbox">
+    			<%= check_box_tag "players_ids_A[]", p.id, false %>
+    			<%= p.user %>
+    		</label>  						 
+   		<% end %>
+   	</div>	
+
+       						 
+	</div>
+
+	<div class="span4" style="padding-top:10px;">
+		<h1> X </h1>
+	</div>
+
+	<div class="span4">
+
+		<%= f.label :goals_team_b, "Time B", class: "control-label" %>
+		<div class="controls">
+      <%= f.text_field :goals_team_b, label: 'Time B', placeholder: "Gols",
+          						 class: "input-medium" %>
+		</div>
+
+		<% Player.all.each do |p| -%>
+    		<label class="checkbox">
+    			<%= check_box_tag "players_ids_B[]", p.id, false %>
+    			<%= p.user %>
+    		</label>  						 
+   		<% end %>
+
+	</div>
+</div>	
+	<br />
+	<hr>
+	<br />
+
+	<div class="controls">
+          <%= f.submit "Criar partida", class: "btn btn-large btn-primary" %>
+  </div>
+  
+
+
+<% end %>
+
+
+
+
+
+ 
+
