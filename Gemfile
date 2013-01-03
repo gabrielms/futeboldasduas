@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
-gem 'sqlite3'
+
 gem 'jquery-rails'
 gem 'bcrypt-ruby'
 gem 'client_side_validations'
@@ -16,6 +16,7 @@ end
 
 group :development do
 	gem 'annotate', '2.5.0'
+	gem 'sqlite3'
 end	
 
 group :production do
