@@ -44,7 +44,7 @@ class MatchesController < ApplicationController
     m = Match.find(@match.reload.id)
     teamA.each do |tA|
       if m.goals_team_a > m.goals_team_b
-        res = "W"
+        res = "V"
       elsif m.goals_team_a < m.goals_team_b     
         res = "L"
       else
@@ -57,7 +57,7 @@ class MatchesController < ApplicationController
 
     teamB.each do |tB|
       if m.goals_team_b > m.goals_team_a
-        res = "W"
+        res = "V"
       elsif m.goals_team_b < m.goals_team_a     
         res = "L"
       else

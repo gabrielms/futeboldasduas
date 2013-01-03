@@ -18,7 +18,26 @@
 #
 
 class Ranking < ActiveRecord::Base
-  attr_accessible :player_id,:draws, :goals_against, :goals_differential, :goals_scored, :losses, :matches, :percent, :points, :victories
+  attr_accessible :player_id, :draws, :goals_against, :goals_differential, 
+                  :goals_scored, :losses, :matches, :percent, :points, :victories
 
   has_many :players
+
+  def update_ranking
+  	
+  	Player.all.each do |p|
+  		r = Ranking.new
+  		r.player_id = p.id
+  		r.draws = PlayerMatch.where(player_id: p.id,result: "D").count
+  		r.losses = PlayerMatch.where(player_id: p.id,result: "L").count
+  		r.victories = PlayerMatch.where(player_id: p.id,result: "V").count
+  		r.points = r.draws + (r.victories*3)
+      r.goals_scored  = PlayerMatch.where(player_id: p.id)
+  		
+
+  		r.save
+  	end
+  		
+  end	
+
 end
