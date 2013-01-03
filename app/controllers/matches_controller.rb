@@ -10,19 +10,22 @@ class MatchesController < ApplicationController
 
   def create
     teamA = params[:players_ids_A] 
-    teamB = params[:players_ids_B] 
+    teamB = params[:players_ids_B]
 
-    if same_players?(teamA,teamB)
+    goals_team_a = params[:goals_team_a] 
+    goals_team_b = params[:goals_team_b]
+
+    if same_players?(teamA,teamB) 
       flash[:error] = 'O mesmo jogador não pode estar em dois times'
     else
       @match = Match.create(params[:match])
-      if @match.save 
+      if @match.save && save_players(teamA,teamB,goals_team_a,goals_team_b)
           flash[:success] = 'Partida criada'
-          save_players(teamA,teamB)
           redirect_to @match
 
-      else 
-          render 'new'
+      else
+          flash[:error] = 'Erro ao criar partida' 
+          redirect_to novapartida_path
       end
     end
   end
@@ -40,31 +43,19 @@ class MatchesController < ApplicationController
     teamA.any?{|arr| teamB.include?(arr)}
   end
 
-  def save_players(teamA,teamB)
-    m = Match.find(@match.reload.id)
+  def save_players(teamA,teamB,goals_team_a,goals_team_b)
+    m = Match.find(@match.reload.id) unless @match.nil?
+    
     teamA.each do |tA|
-      if m.goals_team_a > m.goals_team_b
-        res = "V"
-      elsif m.goals_team_a < m.goals_team_b     
-        res = "L"
-      else
-        res = "D"
-      end
       p = Player.find(tA)
-      pm = p.PlayerMatches.build(match_id: m.id,team:"A",result: res )
+      pm = p.PlayerMatches.build(match_id: m.id,team:"A",goals_against: goals_team_b,
+                                 goals_scored: goals_team_a)
       pm.save  
     end
-
     teamB.each do |tB|
-      if m.goals_team_b > m.goals_team_a
-        res = "V"
-      elsif m.goals_team_b < m.goals_team_a     
-        res = "L"
-      else
-        res = "D"
-      end
       p = Player.find(tB)
-      pm = p.PlayerMatches.build(match_id: m.id,team:"B",result: res )
+      pm = p.PlayerMatches.build(match_id: m.id,team:"B",goals_against: goals_team_a,
+                                 goals_scored: goals_team_b)
       pm.save  
     end
 

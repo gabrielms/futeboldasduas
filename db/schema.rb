@@ -15,19 +15,19 @@ ActiveRecord::Schema.define(:version => 20121227224428) do
 
   create_table "matches", :force => true do |t|
     t.date     "date"
-    t.integer  "goals_team_a"
-    t.integer  "goals_team_b"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "player_matches", :force => true do |t|
     t.integer  "match_id"
     t.integer  "player_id"
+    t.integer  "goals_scored"
+    t.integer  "goals_against"
     t.string   "team"
     t.string   "result"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "players", :force => true do |t|
