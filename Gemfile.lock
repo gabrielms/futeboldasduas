@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/bcardarella/client_side_validations.git
+  revision: 7145c84c3737f6bd8b158ba204dc8c38197753c8
+  specs:
+    client_side_validations (3.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -35,7 +41,6 @@ GEM
     bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
     builder (3.0.4)
-    client_side_validations (3.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -91,7 +96,7 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    simple_form (2.0.4)
+    simple_form (2.0.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
     sprockets (2.1.3)
@@ -116,12 +121,12 @@ DEPENDENCIES
   annotate (= 2.5.0)
   bcrypt-ruby
   bootstrap-sass
-  client_side_validations
+  client_side_validations!
   coffee-rails (~> 3.2.1)
   jquery-rails
   pg
   rails (= 3.2.7rc1)
   sass-rails (~> 3.2.3)
-  simple_form
+  simple_form (= 2.0)
   sqlite3
   uglifier (>= 1.0.3)
