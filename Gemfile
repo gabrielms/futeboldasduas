@@ -4,7 +4,7 @@ gem 'rails', '3.2.7rc1'
 
 gem 'jquery-rails'
 gem 'bcrypt-ruby'
-
+gem 'client_side_validations'
 gem 'simple_form'
 
 group :assets do
@@ -21,6 +21,6 @@ end
 
 group :production do
 	gem 'pg'
-	gem 'client_side_validations'
+	
 end	
 
