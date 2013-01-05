@@ -5,7 +5,7 @@ gem 'rails', '3.2.7rc1'
 gem 'jquery-rails'
 gem 'bcrypt-ruby'
 gem 'simple_form', '2.0'
-gem 'client_side_validations', :git => "git://github.com/bcardarella/client_side_validations.git"
+gem 'client_side_validations'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
