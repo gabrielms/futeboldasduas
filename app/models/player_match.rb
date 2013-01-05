@@ -36,8 +36,6 @@ class PlayerMatch < ActiveRecord::Base
       self.connection.execute("UPDATE player_matches SET result = '#{res}'
       												WHERE player_matches.id = #{self.id}")
       	
-      
-   	
  		end
  
 end

@@ -1,0 +1,41 @@
+<!-- num.round(2) -->	
+<table class="table table-hover">
+		<thead>
+		  <tr>
+		    <th>#      </th>
+		    <th>Jogador	</th>
+		    <th>Pontos	</th>
+		    <th>Jogos   </th>
+		    <th>Vitorias</th>
+		    <th>Empates	</th>
+		    <th>Derrotas</th>
+		    <th>GP			</th>
+		    <th>GC			</th>
+		    <th>SG      </th>
+		    <th>Aproveitamento</th>
+		  </tr>
+		</thead>
+
+<% @ranking.sort { |a,b| b.percent <=> a.percent }.each do |r| %>
+
+		<tbody>
+		  <tr>
+		    <td>	<%= r.id %>															</td>
+		    <td>	<%= r.player.user %>										</td>
+		    <td>  <%= r.points %>													</td>
+		    <td>  <%= r.matches %>												</td>
+		    <td>  <%= r.victories %>											</td>
+		  	<td>  <%= r.draws %>													</td>
+		  	<td>  <%= r.losses %>													</td>
+		  	<td>  <%= r.goals_scored %>										</td>
+		  	<td>  <%= r.goals_against %>									</td>
+		  	<td>  <%= r.goals_differential %>							</td>
+		  	<td>  <%= (r.percent.round(2)).to_s + '%' %>	</td>
+		  </tr>
+		  
+<% end %>  
+
+</tbody>
+
+</table>          
+

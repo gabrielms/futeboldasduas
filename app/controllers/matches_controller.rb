@@ -22,6 +22,8 @@ class MatchesController < ApplicationController
       if @match.save && save_players(teamA,teamB,goals_team_a,goals_team_b)
           flash[:success] = 'Partida criada'
           redirect_to @match
+          r = Ranking.new
+          r.update_ranking
 
       else
           flash[:error] = 'Erro ao criar partida' 
@@ -45,22 +47,19 @@ class MatchesController < ApplicationController
 
   def save_players(teamA,teamB,goals_team_a,goals_team_b)
     m = Match.find(@match.reload.id) unless @match.nil?
-    
+
     teamA.each do |tA|
       p = Player.find(tA)
       pm = p.PlayerMatches.build(match_id: m.id,team:"A",goals_against: goals_team_b,
                                  goals_scored: goals_team_a)
       pm.save  
     end
+
     teamB.each do |tB|
       p = Player.find(tB)
       pm = p.PlayerMatches.build(match_id: m.id,team:"B",goals_against: goals_team_a,
                                  goals_scored: goals_team_b)
       pm.save  
     end
-
-    
   end 
-
-
 end

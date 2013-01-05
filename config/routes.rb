@@ -1,6 +1,7 @@
 Futeboldasduas::Application.routes.draw do
 
 
+
   get "player_matches/new"
 
   get "player_matches/create"
@@ -19,6 +20,7 @@ Futeboldasduas::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete 
   match '/novapartida', to: 'matches#new'
   match '/novojogador', to: 'players#new'
+  match '/ranking', to: 'ranking#index'
  
 
 
