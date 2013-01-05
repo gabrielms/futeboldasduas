@@ -25,7 +25,7 @@ class Player < ActiveRecord::Base
   
   validates :name, presence: true, length: { maximum: 30 }
   
-  VALID_USER_REGEX = /\A[\w-]{5,15}\z/i
+  VALID_USER_REGEX = /\A[\w-]{3,15}\z/i
   validates :user,  presence: true, format: { with: VALID_USER_REGEX },
                        uniqueness: { case_sensitive: false }
   
