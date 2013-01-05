@@ -60,6 +60,6 @@ module Futeboldasduas
     config.assets.version = '1.0'
 
     # Heroku configuration
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
   end
 end
