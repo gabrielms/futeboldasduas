@@ -2,13 +2,7 @@ Futeboldasduas::Application.routes.draw do
 
 
 
-  get "player_matches/new"
-
-  get "player_matches/create"
-
-  get "player_matches/show"
-
-  root to: 'pages#home'
+  root to: 'ranking#index'
 
   resources :matches, :players
   resources :sessions, only:[:new, :create, :destroy]
