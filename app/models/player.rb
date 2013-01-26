@@ -16,7 +16,7 @@ class Player < ActiveRecord::Base
   attr_accessible :name, :password_confirmation, :password, :user
   has_secure_password
 
-  belongs_to :ranking
+  has_one :ranking
   has_many :PlayerMatches
   has_many :matches, :through => :PlayerMatches
 
